@@ -3,15 +3,27 @@ var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var passport = require('passport');
 // require('dotenv').config();
+var flash = require('connect-flash');
+var session = require('express-session');
+
 
 var app = express();
 
-var mongoUrl = process.env.MONGOLAB_URI || 'mongodb://localhost/nameHere';
+var mongoUrl = process.env.MONGOLAB_URI || 'mongodb://localhost/config/database.js';
 var mongoose = require('mongoose');
 mongoose.connect(mongoUrl, function(err) {
   console.log(err || `Connected to MongoDB: ${mongoUrl}`);
 });
+
+// require('./config/passport')(passport); // pass passport for configuration
+
+//for passport
+app.use(session({ secret: 'AOTD' })); // session secret
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+app.use(flash()); 
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -20,6 +32,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'client')));
 
 app.use('/', require('./routes/index'));
+require('./app/routes/passport.js')(app,passport);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
