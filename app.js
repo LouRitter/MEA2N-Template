@@ -17,13 +17,6 @@ mongoose.connect(mongoUrl, function(err) {
   console.log(err || `Connected to MongoDB: ${mongoUrl}`);
 });
 
-// require('./config/passport')(passport); // pass passport for configuration
-
-//for passport
-app.use(session({ secret: 'AOTD' })); // session secret
-app.use(passport.initialize());
-app.use(passport.session()); // persistent login sessions
-app.use(flash()); 
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -32,7 +25,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'client')));
 
 app.use('/', require('./routes/index'));
-require('./app/routes/passport.js')(app,passport);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

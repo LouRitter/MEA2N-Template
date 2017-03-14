@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 describe('universal truths', function () {
     it('should do math', function () {
         expect(5).toBeGreaterThan(4);

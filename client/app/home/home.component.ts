@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { Auth }       from '../auth.service';
 
 @Component({
     moduleId: module.id,
@@ -9,8 +10,7 @@ import { Router } from "@angular/router";
 })
 
 export class HomeComponent implements OnInit {
-    constructor(private router: Router) {}
-    
+    constructor(private auth: Auth) {}
     ngOnInit(): void {}
 
 }

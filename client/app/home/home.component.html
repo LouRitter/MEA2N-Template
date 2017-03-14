@@ -1,7 +1,8 @@
 <div class="container">
 <div class="jumbotron">
   <h1>Album of the Day</h1>
-  <p>...</p>
+  <h4 *ngIf="auth.authenticated()">You are logged in</h4>
+    <h4 *ngIf="!auth.authenticated()">You are not logged in, please click 'Log in' button to login</h4>
   <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
 </div>
 </div>

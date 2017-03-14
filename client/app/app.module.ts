@@ -8,6 +8,8 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { HomeComponent } from "./home/home.component";
 import { FeedComponent } from "./feed/feed.component";
+import { routing,
+         appRoutingProviders } from './app.routes';
 
 
 @NgModule({
@@ -15,14 +17,15 @@ import { FeedComponent } from "./feed/feed.component";
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    routing
   ],
   declarations: [
     AppComponent, 
     HomeComponent,
     FeedComponent
   ],
-  providers: [ ],
+  providers: [ appRoutingProviders ],
   bootstrap: [ AppComponent ]
 })
 

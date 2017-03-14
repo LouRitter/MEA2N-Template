@@ -23,7 +23,7 @@
       'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',   
       'ts': 'npm:plugin-typescript@4.0.10/lib/plugin.js',
       'typescript': 'npm:typescript@2.0.3/lib/typescript.js',
-
+      'angular2-jwt': 'node_modules/angular2-jwt/angular2-jwt.js',
        'moment': 'node_modules/moment',
        'ng2-bootstrap':'node_modules/ng2-bootstrap',
     },
@@ -36,6 +36,9 @@
       rxjs: {
         main: 'Rx.js',
         defaultExtension: 'js'
+      },
+      'angular2-jwt': {
+          defaultExtension: 'js'
       }
     }
   });
