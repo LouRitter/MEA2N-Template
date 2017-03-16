@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { Auth }              from './auth.service';
+import { Http } from '@angular/http';
+import { Router } from '@angular/router';
+import { Auth } from './auth.service';
 
 @Component({
   moduleId: module.id,
