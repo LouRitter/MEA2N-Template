@@ -3,21 +3,20 @@ import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule } from "@angular/forms";
 import { HttpModule } from "@angular/http";
-import { AppRoutingModule } from "./app-routing.module";
 import { AUTH_PROVIDERS }      from 'angular2-jwt';
 
 import { AppComponent } from "./app.component";
 import { HomeComponent } from "./home/home.component";
 import { FeedComponent } from "./feed/feed.component";
-import { appRoutingProviders } from './app-routing.module';
-import { Auth } from './auth.service';
+import {routing, appRoutingProviders } from './app-routing.module';
+
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule,
+    routing
   ],
   declarations: [
     AppComponent, 
