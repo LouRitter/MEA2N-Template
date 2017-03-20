@@ -8,24 +8,37 @@ declare var Auth0Lock: any
 
 @Injectable()
 export class Auth {
+options = {
+  theme: {
+    logo: 'https://example.com/assets/logo.png',
+    primaryColor: 'green'
+  }  
+};
   // Configure Auth0
-  lock = new Auth0Lock(myConfig.clientID, myConfig.domain, {});
+  lock = new Auth0Lock(myConfig.clientID, myConfig.domain,this.options, {});
 
-  constructor() {
-    // Add callback for lock `authenticated` event
-    this.lock.on('authenticated', (authResult) => {
+  userProfile: Object;
+
+ constructor() {
+    // Set userProfile attribute of already saved profile
+    this.userProfile = JSON.parse(localStorage.getItem('profile'));
+
+    // Add callback for the Lock `authenticated` event
+    this.lock.on("authenticated", (authResult) => {
       localStorage.setItem('id_token', authResult.idToken);
-    this.lock.getProfile(authResult.idToken, (error: any, profile: any) => {
+
+      // Fetch profile information
+      this.lock.getProfile(authResult.idToken, (error, profile) => {
         if (error) {
-          console.log(error);
+          // Handle error
+          alert(error);
+          return;
         }
 
         localStorage.setItem('profile', JSON.stringify(profile));
-        console.log(localStorage);
+        this.userProfile = profile;
       });
-
     });
-
   };
 
   public login() {
@@ -40,7 +53,9 @@ export class Auth {
   };
 
   public logout() {
-    // Remove token from localStorage
     localStorage.removeItem('id_token');
+    localStorage.removeItem('profile');
+    this.userProfile = undefined;
+
   };
 }

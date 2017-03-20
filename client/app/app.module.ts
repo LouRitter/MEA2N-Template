@@ -8,6 +8,7 @@ import { AUTH_PROVIDERS }      from 'angular2-jwt';
 import { AppComponent } from "./app.component";
 import { HomeComponent } from "./home/home.component";
 import { FeedComponent } from "./feed/feed.component";
+import {ProfileComponent} from "./profile/profile.component";
 import {routing, appRoutingProviders } from './app-routing.module';
 
 
@@ -21,7 +22,8 @@ import {routing, appRoutingProviders } from './app-routing.module';
   declarations: [
     AppComponent, 
     HomeComponent,
-    FeedComponent
+    FeedComponent,
+    ProfileComponent,
   ],
   providers: [ appRoutingProviders, AUTH_PROVIDERS],
   bootstrap: [ AppComponent ]
